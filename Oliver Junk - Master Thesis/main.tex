@@ -1,0 +1,79 @@
+\input{sources/settings}              % do not touch!
+
+% thesis details
+\title{Development, Implementation and Evaluation of a Security Concept for the Secure Transfer of Sensitive Personal Data Between Different Devices} 
+\newcommand{\Year}{2019}
+\date{November 18, \Year}
+\newcommand{\thesisKind}{Master}
+\newcommand{\degree}{Master~of~Science}
+\newcommand{\versionnumber}{Final Version}
+\let\origthelstnumber\thelstnumber
+\makeatletter
+\newcommand*\Suppressnumber{%
+  \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+     \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+
+\newcommand*\Reactivatenumber{%
+  \lst@AddToHook{OnNewLine}{%
+   \let\thelstnumber\origthelstnumber%
+   \advance\c@lstnumber\@ne\relax}%
+}
+% author details
+\author{Oliver~Junk}
+\newcommand{\matrikelno}{4568642}
+\newcommand{\email}{oliver132@zedat.fu-berlin.de}
+
+% supervisor details
+\newcommand{\supervisor}{Nicolas~Lehmann}
+\newcommand{\supervisorUniversity}{Freie Universität Berlin}
+\newcommand{\supervisorDepartment}{Dept. of Computer Science and Mathematics}
+\newcommand{\supervisorAG}{Databases and Information Systems Group}
+\newcommand{\supervisorCountry}{Germany}
+
+% Advisor 1 details
+\newcommand{\fstAdvisor}{Prof.~Dr.~Agnès~Voisard}
+\newcommand{\fstAdvisorsUniversity}{Freie Universität Berlin} 
+\newcommand{\fstAdvisorsDepartment}{Dept. of Computer Science and Mathematics} 
+\newcommand{\fstAdvisorsAG}{Databases and Information Systems Group}
+\newcommand{\fstAdvisorsCountry}{Germany}
+
+% Advisor 2 details
+\newcommand{\sndAdvisor}{Prof.~Dr.~Marian~Margraf}
+\newcommand{\sndAdvisorsUniversity}{Freie Universität Berlin} % or company
+\newcommand{\sndAdvisorsDepartment}{Dept. of Computer Science and Mathematics}
+\newcommand{\sndAdvisorsAG}{ID-Management Group}
+\newcommand{\sndAdvisorsCountry}{Germany}
+
+
+% document structure (jump to the part you want to write)
+%% Average Bachelor Thesis Size: 30+ pages
+%% Average Master   Thesis Size: 60+ pages
+\begin{document}
+\include{sources/titlepage-sd}         % do not touch!
+
+\include{content/abstract}             % Abstract, write it!
+
+\include{sources/toc-lot-lof-lol}      % do not touch!
+
+\include{content/01-introduction}               % Introduction,                write it!
+\include{content/02-background}                 % Background,                  write it!
+\include{content/03-methodology}       	        % Elaboration of Contribution, write it!
+\include{content/04-requirement-assessment}     % Elaboration of Contribution, write it!
+\include{content/05-design-evaluation}	        % Implementation,              write it!
+\include{content/06-implementation}    	        % Evaluation,                  write it!
+\include{content/07-results}       	            % Results,                     write it!
+\include{content/08-conclusion}                 % Conclusion,                  write it!
+
+\include{sources/references}                    % do not touch!
+
+\appendix
+\include{content/a1_sourcecode}
+
+
+\end{document}
+
+%% Average Bachelor Thesis Size: 30+ pages
+%% Average Master   Thesis Size: 60+ pages

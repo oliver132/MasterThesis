@@ -1,0 +1,68 @@
+\chapter{Introduction}
+\label{introduction}
+
+This first chapter, \textit{Introduction}, consists of three sections. The first section, \textit{\nameref{motivation}}, presents issues regarding the communication and transportation of sensitive personal data. The second section, \textit{\nameref{contribution}}, defines how this master thesis contributes to solve these issues by designing a security concept for the secure transfer of sensitive data. The third section, \textit{\nameref{structure}}, gives an overview on how this master thesis is organized. 
+
+\section{Motivation}
+\label{motivation}
+
+% Einleitung in die Domäne
+Digital communication and information resources affect almost every aspect of our lives. Personal information is collected everywhere as persons give it up willingly by using platforms such as social media platforms or bonus programs while shopping. With the increased availability of information in electronic form, issues concerning data privacy surface, such as the Facebook Cambridge Analytica\footnote{The Guardian; The Cambridge Analytica Files: \url{https://www.theguardian.com/news/series/cambridge-analytica-files}. (Online; last accessed:  November 18, 2019)} affair or large-scale data breaches in different companies show. Big corporations fail or intentionally neglect to protect their customers privacy to pursue profit. 
+
+% Einleitung in das Problem
+Personal data is any data of an identifiable individual, such as name, date of birth and gender, but also sensitive data such as ethnicity, sexual orientation and religious association. Disclosure of this data can lead to great harm to an individual. From a declined job interview because of different political beliefs, increased health insurance coverage to threats such as blackmailing and racial persecution.
+
+To protect the customers right to privacy, the European Union established the \textit{General Data Protection Regulation}\cite{GDPR}, a law on data protection and privacy for all individuals living in the European Union. Its goal is to provide the customers with more control over their data by unifying the regulations in the European Union. This regulation demands of controllers of personal data to install and maintain technical and organizational measures to comply the data protection principles, such as using pseudonymization and to use the highest possible privacy settings by default.
+
+The GDPR defines a special category of personal data: sensitive personal data\cite{GDPR9}. It consists of data revealing political opinions, racial or ethnic origins, religious or philosophical beliefs, medical information and more. Processing of sensitive personal data demands compliance with stricter regulations to further protect the privacy of an individual.
+
+% Beispiel 1
+\textit{\textbf{Example 1} Mr. Ronnie Coleman is taking part in a clinical trial. For this he regularly shoots photos of his skin with a special camera after applying the skin cream to be tested. In these photos a skin disease of Mr. Coleman is visible, which he wants to keep private.
+One day, Mr. Coleman sends the photos from an unsecured network. The data is intercepted by a malicious hacker. The hacker blackmails Mr. Coleman with the publication of the photos. Mr. Coleman agrees to the demands of the blackmailer for fear of losing his job or being socially marginalized.}
+
+% Formale Problemdefinition
+The security and privacy of personal data, especially those that fall under the category of sensitive personal data, is essential to guarantee an individual’s right of self-determination. The lack or bad implementation of a security concept to protect sensitive data often leads to a breach of regulations. A well thought security concept using up-to-date cryptographic protocols ensuring critical properties such as confidentiality and integrity is needed to protect the security and privacy of individuals.
+ 
+\section{Outline of Contribution}
+\label{contribution}
+
+The goal of this Master thesis is to design a security concept for the transfer of sensitive personal data complying with the GDPR, evaluate its security level and give an implementation guideline to identified security measurements.\\
+\newline
+As part of the CliniScale project\footnote{CliniScale Project: \url{http://www.mi.fu-berlin.de/en/inf/groups/ag-db/projects/CliniScale/index.html}. (Online; last accessed:  November 18, 2019)}, the concept is primarily designed for the secure communication of medical data. Since there is not made any distinction between different kind of data under the category of sensitive personal data, the concept designed is universally applicable to any transfer of sensitive personal data.\\
+\newline
+The GDPR is analyzed in order to identify requirements to the security concept designed in this thesis to ensure the concepts compliance with the regulation. The process of the CliniScale system is analyzed in order to model it as a preliminary task for the security risk assessment. A technical guideline to counsel for the choice of state-of-the-art cryptographic protocols and their configuration is identified in order to meet the requirements of the GDPR.\\
+\newline
+The security concept is designed performing a security risk assessment by applying the MoRA methodology. The methodology is altered in order to support the Microsoft Threat Modeling Tool as a threat and control catalogue. \\
+\newline
+Further, a guideline to implement security measurements identified in the process of the security risk assessment is created.
+
+\section{Structure of the Thesis}
+\label{structure}
+
+% introduction
+\paragraph{\nameref{introduction}} The chapter \textit{\nameref{introduction}} covers the three sections \textit{\nameref{motivation}}, \textit{\nameref{contribution}} and \textit{\nameref{structure}}. The section \textit{\nameref{motivation}} describes the current situation and issues regarding privacy and security in a data driven world. Afterwards, the section \textit{\nameref{contribution}} presents the work done as part of this thesis, the design and validation of a security concept to secure the communication in a domain were data privacy is of critical importance. At last, the section \textit{\nameref{structure}} gives an overview and description of every chapter and their sections this thesis contains.
+
+
+% background
+\paragraph{\nameref{background}} The chapter \textit{\nameref{background}} consists of the four sections \textit{\nameref{definition}}, \textit{\nameref{relatedsystems}}, \textit{\nameref{cliniscale}} and \textit{\nameref{relatedwork}}. The first section \textit{\nameref{background}} gives an explanation and definition of terms and concepts which are used in this thesis. The second section, \textit{\nameref{relatedsystems}}, presents a project with similarities to the CliniScale system and identifies security measurements implemented. The third section, \textit{\nameref{cliniscale}}, presents the project this thesis is part of. The last section, \textit{\nameref{relatedwork}}, presents academic work in the domain of this thesis.
+
+% methodology
+\paragraph{\nameref{morachapter}} This chapter presents the methodology used in this thesis to perform a security risk assessment and consists of the four sections \textit{\nameref{workproducts}}, \textit{\nameref{moraactivities}}, \textit{\nameref{artifacts}} and \textit{\nameref{moramodification}}. The first section, \textit{\nameref{workproducts}}, defines the artifacts created by the activities. Section two, \textit{\nameref{moraactivities}}, gives detail about the workflows to create work products. The third section, \textit{\nameref{artifacts}}, describes external tools that help in performing a risk assessment. The fourth section, \textit{\nameref{moramodification}}, explains the alterations made to the MoRA methodology in order to integrate the Microsoft STRIDE threat model and the Microsoft Threat Modeling Tool.
+
+% requirement assessment
+\paragraph{\nameref{chapterreqass}} The chapter \textit{\nameref{chapterreqass}} provides examination in different domains regarding this thesis. It consists of the three sections \textit{\nameref{gdpr}}, \textit{\nameref{sysrequirements}} and \textit{\nameref{cryptorequirements}}. The first section, \textit{\nameref{gdpr}}, analyzes the GDPR and identifies legal restraints this thesis has to comply with. The section \textit{\nameref{sysrequirements}} analyzes and models the process of the CliniScale system. The third section, \textit{\nameref{cryptorequirements}}, identifies technical guidelines to consult when implementing cryptographic protocols.
+
+
+
+% design
+\paragraph{\nameref{designeval}} In the chapter \textit{\nameref{designeval}} the security risk assessment is performed. It consists of the sections \textit{\nameref{assessmentmodel}}, \textit{\nameref{archdesign}} and \textit{\nameref{riskassessment}}. The section \textit{\nameref{assessmentmodel}} defines the Assessment Model as a preliminary task for the risk assessment. The second section, \textit{\nameref{archdesign}}, describes how the CliniScale system is modeled as System Under Development and imported in the Microsoft Threat Modeling Tool. The third section, \textit{\nameref{riskassessment}}, describes the performance of the security risk assessment.
+
+
+% implementation
+\paragraph{\nameref{implementation}} The chapter \textit{\nameref{implementation}} creates a guideline to implement identified controls into the existing CliniScale implementation. The chapter consists of the three sections \textit{\nameref{sysarchitecture}}, \textit{\nameref{technologies}} and \textit{\nameref{implementationconsequences}}. The first section, \textit{\nameref{sysarchitecture}}, analyzes the current implementation of the CliniScale project. The second section, \textit{\nameref{technologies}}, presents the frameworks and libraries used in the implementation. The third section, \textit{\nameref{implementationconsequences}}, presents a guideline on how to implement the controls identified in the risk assessment into the CliniScale implementation.
+
+% results
+\paragraph{\nameref{results}} This chapter consists of the two sections \textit{\nameref{summary}} and \textit{\nameref{limitations}} and presents the result of this thesis. The section \textit{\nameref{summary}} lists the findings of this thesis. The second section, \textit{\nameref{limitations}}, details aspects of this thesis that have not been examined in this work.
+
+% conclusion
+\paragraph{\nameref{conclusion}} The last chapter \textit{\nameref{conclusion}} consists of two sections: \textit{\nameref{discussion}} and \textit{\nameref{futurework}}. The section \textit{\nameref{discussion}} opens a debate about the results found in this thesis. The section \textit{\nameref{futurework}} presents possible suggestions for future research following the work made in this thesis.

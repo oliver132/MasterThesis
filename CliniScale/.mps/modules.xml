@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MPSProject">
+    <projectModules>
+      <modulePath path="$PROJECT_DIR$/CliniScale/CliniScale.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/Phase1/Phase1.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/Phase2/Phase2.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/Presentation/Presentation.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/StandardComposition/StandardComposition.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/../../master/MySecurityAnalysis.msd" folder="" />
+    </projectModules>
+  </component>
+</project>

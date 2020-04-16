@@ -1,0 +1,118 @@
+\chapter{Methodology: Modular Risk Assessment}
+\label{morachapter}
+
+The chapter \textit{\nameref{morachapter}} presents the methodology used to perform the core part of this thesis: the security risk assessment. 
+
+\textit{Modular Risk Assessment (MoRA)} is a method for security risk assessment developed by Prof. Dr. Eichler and Dr. Angermeier from the Fraunhofer AISEC in 2015. Originally designed to be used in the automotive domain, its core objective flexibility of application in different environments enables the application of MoRA in other domains as well. MoRA further features a modular structure, a unified method framework, well-defined artifacts as interfaces between activities and various guidelines.
+
+The MoRA method consists of various activities and work products, supported by a set of guidelines and artifacts. The following sections \textit{\nameref{workproducts}}, \textit{\nameref{moraactivities}} and \textit{\nameref{artifacts}} present each of these core elements.
+
+\section{Work Products}
+\label{workproducts}
+
+MoRA consists of two work products: \textit{\nameref{morasud}} and \textit{\nameref{moraassessment}}. They describe the artifacts created when performing the processes defined under \textit{\nameref{moraactivities}}.
+
+\subsection{System Under Development}
+\label{morasud} 
+
+The \textit{System Under Development} (\textit{SUD}) represents the basic architecture of the underlying system. The \textit{SUD} consists of various elements which can be either functions, components, data or data channels. Functions characterize the \textit{SUDs} functionality and describe the main tasks the system must be able to perform. Components represent the basic physical elements of every system, such as servers, databases, mobile phones. Data describes the information that may be produced or processed in a component and is transferred over data channels. Data channels are the means of transportation of data between different components. A data channel consists data flows, each having a source and a destination component and transferred data elements. Functions, components and data elements may be decomposed hierarchically in order to address the required level of detail.
+
+\subsection{Risk Assessment}
+\label{moraassessment}
+
+The \textit{Risk Assessment} documents the results of the activities \textit{\nameref{moraprotneeds}}, \textit{\nameref{moraanathreats}}, \textit{\nameref{moraanarisks}} and \textit{\nameref{moraintrocontrols}}. It consists of security goals, threats, risks and controls.
+
+Security Goals describe the main protection needs of a system and consist of a referenced function, component or data channel as well as a security goal class. Asserted damage criteria define the damage potential of a potential breach of the security goal. Security goals can be linked hierarchically, indicating their dependencies and allowing for propagation of their damage potentials.\\
+Threats describe major endangerments of security goals. Every threat instantiates a threat class of the threat catalogue. They reference components or data channels and security goals they have an impact on. Threats are also rated by a required attack potential, describing the skill level of an adversary needed to perform the threat. \\
+Risks combine security goals and matching threats and controls, forming a risk potential, which is calculated by aggregating the damage potential of the security goals and the attack potential of threats reduced by given controls. Risk elements describe the overall risk level of the risk assessment.\\
+Controls describe security measurements to protect security goals by mitigating respective threats. Every control instantiates a control class, contains references to mitigated threats and an defines a required attack potential. The required attack potential of threats is overwritten by these, usually, lower values, creating a new required attack potential. Controls can introduce new components and respective security goals.
+
+
+\section{Activities}
+\label{moraactivities}
+
+The MoRA method defines various activities, entailing a hierarchy of tasks that define purpose, input and output in terms of work products as well as a set of steps to execute. The activities are \textit{\nameref{moradocsud}}, \textit{\nameref{moraprotneeds}}, \textit{\nameref{moraanathreats}}, \textit{\nameref{moraanarisks}} and \textit{\nameref{moraintrocontrols}}.
+
+\subsection{Document System Under Development}
+\label{moradocsud}
+This activity is responsible for creating the \textit{\nameref{morasud}}. First, the functions of the system are identified and decomposed into a hierarchic structure. The main functions of the system may be decomposed into various sub-functions, such as a function that retrieves the information and another function that processes it. Second, the investigated systems architecture is modeled out of components, data and data channels.\\
+Experience of the security expert helps to determine the needed granularity of the created model. Going into detail without gaining any improvement regarding security can impede the whole process.
+
+\subsection{Determine Protection Needs}
+\label{moraprotneeds}
+Goal of this activity is to identify and determine security goals and estimate the damage potential resulting from a violation of these. The decomposition of the \textit{SUD} helps identifying security goals, by matching its elements with security goal classes. For each of these potential security goals, a list of damage criteria from the \textit{Assessment Model} is checked. If any damage criteria are applicable, a security goal is found. The damage potential of the security goal is determined by the aggregated damage potentials of the assigned damage criteria.
+
+\subsection{Analyze Threats}
+\label{moraanathreats}
+
+This activity identifies potential threats to the security goals determined in the previous activity. To identify applicable threats, all previously determined security goals and the class of their referenced element in the \textit{SUD} are paired with the threat catalogue. If the security goal class and the specific element class match, a potential threat is found. The threats required attack potential is estimated by defining a combination of risk factors.
+
+\subsection{Analyze Risks}
+\label{moraanarisks}
+
+The activity \textit{Analyze Risks} identifies risks by evaluating threats declared in the beforehand activity. Threats pose a required attack potential, rating the difficulty to perform the given threat. This rating combined with the aggregated damage potentials of affected security goals, form a risk level. Risks can contain various security goals and threats and allow for a fast overview of the current security level of the investigated system.
+
+
+\subsection{Establish Controls}
+\label{moraintrocontrols}
+
+The previous activity, \textit{\nameref{moraanarisks}}, results in a list of risks with a risk level rating. If the computed rating does not match the targeted lowest acceptable risk level, measurements to mitigate the threats of the risk must be established. To identify the right control, for every threat associated with the risk the control catalogue is searched for a control class which matches the \textit{SUD} element type and the threat class. Out of the found control classes, one or more can be implemented in the system to mitigate the threat. The risk element should now compute a new, usually lower, risk level. Beware that some controls introduce new elements to the \textit{SUD}, such as security keys when implementing cryptographic protocols. These elements also introduce new security goals, such as these security keys must be kept confidential. This means that, if new elements and security goals are introduced, all activities may have to be iterated over again until no new elements are introduced.
+
+
+
+\section{Artifacts}
+\label{artifacts}
+
+Artifacts help in performing the MoRA method by complementing activities and work products. These consist of an \textit{\nameref{moraassmodel}}, the \textit{\nameref{morathreatcat}} and the \textit{\nameref{moracontrolcat}}.
+
+\subsection{Assessment Model}
+\label{moraassmodel}
+The \textit{Assessment Model} defines various variables needed to perform the MoRA \\methodology.
+Security Goal Classes define different type of security properties. For further information, see \textit{\nameref{ciatriad}}. 
+Damage Potentials estimate the expected damage in case of a breach of a security goal.
+Damage Classes categorize damage criterions of different domains. 
+Damage Subclasses \& Damage Criteria further partition damage classes. Damage subclasses specify the type of damage of damage classes. Damage criteria represent different levels of caused damage within a damage subclass. 
+Required Attack Potential describe the ability of an adversary needed to perform a threat.
+Risk Level defines the expected risk based on a damage potential and a required attack potential. Low damage potentials and high required attack potentials result in a low risk level. 
+Risk Potential Rating is a table defining how risk potentials are combined by joining damage potentials and required attack potentials. 
+
+
+\subsection{Threat Catalogue}
+\label{morathreatcat}
+
+Threat catalogues are supportive tools to perform a risk assessment. They provide an operator with a list of threats to check against. While they provide remedy to lacking knowledge of lesser experienced security analysts, they also help more experienced analysts to not overlook potential threats because their experience has them less interested in them. There are various threat catalogues for different domains and different level of detail, such as the BSI IT-Grundschutz Catalogues\cite{bsicatalogues}, and threat modeling mnemonics, such as Microsoft STRIDE, which provide a clear process in how to identify possible threats.
+
+\subsection{Control Catalogue}
+\label{moracontrolcat}
+
+Similar to threat catalogues, control catalogues give a basic overview of commonly used security measurements to mitigate identified threats and support the security analysts work. 
+
+
+\section{Modifications}
+\label{moramodification}
+In this section it is described how the MoRA methodology is altered in order to allow the integration of the \textit{Microsoft STRIDE} threat model and the Microsoft Threat Modeling Tool as source for defining catalogues.
+
+\subsection{Threat Catalogue}
+STRIDE is a threat model created by Microsoft for the use in the Microsoft Threat Modeling Tool. STRIDE stands for spoofing, tampering, repudiation, information disclosure, denial of service and elevation of privilege. These six terms represent different categories of threats. Each category consists of specific threats targeting different kind of software or hardware. STRIDE is used in this thesis to complement the MoRA methodology by acting as a threat catalogue. To apply STRIDE to a \textit{SUD}, the \textit{SUD} must imported into the Microsoft Threat Modeling Tool. Once the architecture is modeled, the Microsoft Threat Modeling Tool automatically generates possible threats, following the STRIDE threat model, for every connection crossing a trust boundary. A set of the list of generated threats is used as a threat catalogue in the MoRA methodology.
+
+
+
+\subsection{Control Catalogue}
+
+Similar to threats, the Microsoft Threat Modeling Tool also offers a control catalogue. Controls are categorized in ten categories\cite{mtmtmitigations}: auditing and logging, authentication, authorization, communication security, configuration management, cryptography, exception management, input validation, sensitive data and session management. Similar to the threat catalogue, each category consists of a set of controls targeting different kind of software or hardware. Threats generated by the Microsoft Threat Modeling Tool include a suggestion of possible mitigations. These suggestions can be identified and used as a control catalogue in the MoRA methodology.
+
+\subsection{Determine Protection Needs}
+\label{altereddetprotneeds}
+The MoRA methodology originally identifies security goals by trying to apply damage criteria to every element defined in the \textit{SUD}. As the STRIDE catalogue is used, security goals can be determined by the generated threats of the Microsoft Threat Modeling Tool. A security goal for every found threat is created, instantiating the threatened security goal class. After creating security goals for the generated threats, damage criteria are assigned to each security goal in order to define the damage potential.
+
+\subsection{Analyze Threats}
+\label{alteredanathreats}
+The Microsoft Threat Modeling Tool generates threats using the STRIDE threat model and a data flow diagram representing the researched system architecture. The generated threats are used as threats in the MoRA methodology. A set of the generated threats is created and imported into the risk assessment. This implies that generated threats of the same type, threatening different elements, are created once in the \textit{Yakindu Security Analyst}. The default value of required attack potential for generated threats is set to "Low". Deviating values are possible and reasoned at creation.
+
+\subsection{Establish Controls}
+\label{alteredestacontrols}
+Generated threats by the Microsoft Threat Modeling Tool suggest possible mitigations. A set of the suggested mitigations is created and used to create controls. These controls mitigate every threat that referenced them. The default value for the required attack potential is "High" unless reasoned otherwise at creation of the control.
+
+
+
+

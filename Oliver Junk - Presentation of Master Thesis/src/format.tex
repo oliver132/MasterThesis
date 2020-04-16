@@ -1,0 +1,350 @@
+%%%%%%%%%%%%% Packages %%%%%%%%%%%%%
+\usepackage{beamerthemesplit}
+\usepackage[ngerman,english]{babel}
+%\usepackage{lmodern} % verbessert verwendete Schriftart
+%\usepackage{times}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[labelfont={color=DBbluedark,bf}, font={color=DBbluedark,footnotesize}]{caption}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage[draft]{pdfcomment}
+
+
+%%%%%%%%%%%%% Settings %%%%%%%%%%%%%
+\beamertemplatenavigationsymbolsempty% suppress the navigation bar
+\setbeamertemplate{caption}[numbered] % Caption haben eine Nummer
+
+%\beamertemplategridbackground[\abstand] % hinterlegt ein Gitter
+
+\rowcolors{2}{lightgray!20}{lightgray!40} % alternierende Zeilenfarbe
+\renewcommand{\arraystretch}{1.2}
+
+\newcommand{\comment}[1]{}
+
+
+%%%%%%%%%%%%%% Layout
+\newcommand{\abstand}{\dimexpr\paperwidth/21\relax}
+\setbeamersize{text margin left=\abstand,text margin right=\abstand}
+\setlength{\columnsep}{\abstand}
+\setlength{\unitlength}{1in}% beamer: 5" x 3.75" (4:3)
+
+%%%%%%%%%%%%%% Fonts 
+\setmainfont{Arial}
+\setsansfont{Arial}
+\setmonofont{Fira Mono}%Fira Mono, Ricty Diminished Discord
+\renewcommand\UrlFont{\rmfamily} % passt URL an
+
+
+%%%%%%%%%%%%%% Titlepage
+\setbeamerfont{title}{size=\LARGE}
+\setbeamerfont{subtitle}{size=\Large}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\scriptsize}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{\centering\vspace{\baselineskip}
+    \color{FUblue}\usebeamerfont{title}\inserttitle\par
+    \usebeamerfont{subtitle}%
+    \vspace{0.5\baselineskip}
+    \usebeamercolor[fg]{subtitle}\insertsubtitle\par
+    \vspace{1\baselineskip}
+    \usebeamerfont{author}\insertauthor\par
+    \vspace{1.5\baselineskip}
+    \textcolor{DBblue}{\rule{\textwidth}{1pt}}\par
+    \vspace{2\baselineskip}
+    \usebeamerfont{institute}\insertinstitute\par
+    \vspace{1.5\baselineskip}
+    \small\usebeamerfont{date}\insertdate\par
+  %\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+}
+
+% \insertshortinstitute
+% \insertshorttitle
+% \insertshortauthor
+% \insertshortdate
+% \insertframenumber
+% \inserttotalframenumber
+% \thesection
+% \insertsection
+
+%%%%%%%%%%%%%% Headline 
+\setbeamertemplate{headline}{%
+%   \leavevmode% horizontal mode is entered
+%   \begin{beamercolorbox}[wd=\paperwidth,
+% 	ht=2ex, dp=1ex, leftskip=1pt,left]%
+%     {section in head/foot}
+%     \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+%   \end{beamercolorbox}%
+%   \vskip0pt
+%   \begin{beamercolorbox}[wd=\paperwidth,
+%     ht=4ex, dp=1.125ex]%
+%     {subsection in head/foot}
+%     \insertsubsectionnavigationhorizontal%
+%       {\paperwidth}{}{\hskip0pt plus1filll}
+%   \end{beamercolorbox}
+}
+
+
+%%%%%%%%%%%%%% frametitle
+\setbeamerfont{frametitle}{size=\large}
+\setbeamertemplate{frametitle}{%
+  \vskip-2pt
+  \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.25ex, left]{frametitle}%
+    \hskip\abstand%
+    \insertframetitle
+  \end{beamercolorbox}%
+  \vskip-1pt%
+  \begin{beamercolorbox}[wd=\paperwidth,
+    ht=1.2ex, dp=0.55ex, left]%
+    {subsection in head/foot}%
+    \tiny%
+    \insertsectionnavigationhorizontal%
+      {\paperwidth}{\hskip\dimexpr0.5\abstand\relax}%
+      {\hskip0pt plus1filll}% glue stretching
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%% Footline 
+\newcommand{\footlinetext}{
+\insertshortauthor\vskip1.5pt
+\insertshortdate}
+
+\setbeamerfont{footline}{size=\tiny,
+series=\normalfont}
+
+\setbeamertemplate{footline}{
+% erzeugt den Fortschrittsbalken
+\color{DBblue!60}%!60
+\rule{\dimexpr\textwidth*\insertframenumber/\inserttotalframenumber\relax}{2pt}% horizontal line
+\color{FUgreen!60}%
+\rule{\dimexpr\textwidth-\textwidth*\insertframenumber/\inserttotalframenumber\relax}{2pt}
+\vskip0pt%
+% fügt Daten hinzu
+\leavevmode% horizontal mode is entered
+\hspace{\abstand}%
+\begin{beamercolorbox}% Logo
+  [wd=\abstand, ht=\dimexpr\abstand+1.5pt\relax, dp=1.5pt, left]
+  {whitebox}%
+  \includegraphics[height=\abstand]{img/agdb-logo}
+\end{beamercolorbox}%
+\hspace{0.5\abstand}%
+\begin{beamercolorbox}% Titel
+  [wd={\dimexpr\paperwidth-10\abstand\relax},
+  ht=\dimexpr\abstand+1.5pt\relax, dp=1.5pt, left]% leftskip=2ex
+  {whitebox}%
+  \raisebox{6.75pt}{%
+  \begin{minipage}{\linewidth}
+  \footlinetext
+  \end{minipage}}
+\end{beamercolorbox}%
+\hfill%
+\begin{beamercolorbox}% Logo
+  [wd=5\abstand, ht=\dimexpr\abstand+1.5pt\relax, dp=1.5pt, right]
+  {whitebox}%
+  \includegraphics[height=\abstand]
+  {img/FULogo_RGB}\hspace{0.5\abstand}
+\end{beamercolorbox}%
+\ifnum\value{framenumber}<1%
+  \begin{beamercolorbox}% Seitennummer
+    [wd=\abstand, ht=\dimexpr\abstand+1.5pt\relax,
+    dp=1.5pt, center]
+    {whitebox}%
+  \end{beamercolorbox}%
+\else%
+  \begin{beamercolorbox}% Seitennummer
+    [wd=\abstand, ht=\dimexpr\abstand+1.5pt\relax,
+    dp=1.5pt, center]
+    {framenumber}%
+    \raisebox{2.2ex}{\textnormal{%
+    \insertframenumber{}%~/~\inserttotalframenumber
+    }}
+  \end{beamercolorbox}%
+\fi%
+}
+
+
+%%%%%%%%%%%%%% TOC 
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{section in toc}{ \textbf{\textcolor{DBblue}{\inserttocsectionnumber}}~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace{0.6em}\color{FUblue!80}\inserttocsectionnumber.\inserttocsubsectionnumber~\inserttocsubsection\par}
+
+\setcounter{tocdepth}{1} % TOC enthält section bis subsection
+
+
+%%%%%%%%%%%%%% Enumitem 
+\setlist[enumerate]{font=\color{DBblue}\bfseries, leftmargin=*}
+\setlist[enumerate,1]{label=\arabic*, ref=\arabic*}
+\setlist[enumerate,2]{label*=.\arabic*, ref=\theenumi.\arabic*}
+\setlist[enumerate,3]{label*=.\arabic*, ref=\theenumii.\arabic*}
+\setlist[itemize]{font=\color{DBblue}\bfseries, leftmargin=*}
+\setlist[itemize,1]{label=%
+	$\blacktriangleright$, ref=\labelitemi}
+\setlist[itemize,2]{label=\small%
+	$\blacktriangleright$, ref=\labelitemii} % \bullet
+\setlist[itemize,3]{label=\footnotesize%
+	$\blacktriangleright$, 
+    ref=\labelitemiii}%textbullet, diamond
+\setlist[description]{font=\color{DBblue}\bfseries, leftmargin=*}
+
+
+%%%%%%%%%% Referenzen %%%%%%%%%%%
+\usepackage[style=numeric, bibencoding=utf8, backend=biber, sorting=none, maxbibnames=99]{biblatex}% für bibliographie, style=authortitle/numeric/ieee, backend=biber/bibtex/bibtex8, bibencoding=ascii/utf8
+\setbeamertemplate{bibliography item}{\insertbiblabel} % setzt Nummerierung im Lit.Verzeichnis
+\usepackage{csquotes} % notwendig, wenn man babel und bibtex benutzt
+\usepackage{silence}% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+\WarningFilter{biblatex}{Patching footnotes failed}
+\addbibresource{src/bibliography.bib}
+% redefines Styles
+\DeclareFieldFormat{isbn}{}
+
+\usepackage{xpatch}
+\xpatchbibmacro{author}{\printnames{author}}{\mkbibbold{\printnames{author}}}{}{} % author bold
+
+
+%%%%%%%%%%%%% Farben %%%%%%%%%%%%%
+\let\definecolor=\xdefinecolor
+\definecolor{FUgreen}{RGB}{153,204,0}
+\definecolor{FUblue}{RGB}{0,51,102}
+\definecolor{DBblue}{RGB}{0,102,204}
+\definecolor{DBbluedark}{RGB}{0,51,102}
+
+\setbeamercolor{palette primary}{bg=FUblue,fg=white}
+\setbeamercolor{palette secondary}{bg=FUblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=FUblue,fg=white}
+\setbeamercolor{palette quaternary}{bg=FUblue,fg=white}
+\setbeamercolor{title}{fg=DBbluedark, bg=white}
+\setbeamercolor{subtitle}{fg=DBbluedark, bg=white}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{author}{fg=DBbluedark, bg=white}
+\setbeamercolor{frametitle}{fg=white,bg=FUblue}
+\setbeamercolor{section in head/foot}{fg=DBbluedark,bg=white}
+\setbeamertemplate{section in head/foot shaded}[default][50]
+\setbeamercolor{subsection in head/foot}{fg=DBbluedark,bg=lightgray}
+\setbeamercolor{framenumber}{fg=white, bg=FUblue}
+\setbeamercolor{whitebox}{fg=DBbluedark,bg=white}
+% Standard block
+\setbeamercolor{block title}{fg=white, bg=FUblue}
+\setbeamercolor{block body}{fg=DBbluedark, bg=lightgray!30}
+% Alert block
+\setbeamercolor{block title alerted}{fg=white, bg=red}
+\setbeamercolor{block body alerted}{fg=DBbluedark, bg=red!20}
+% Example block
+\setbeamercolor{block title example}{fg=white, bg=FUblue}
+\setbeamercolor{block body example}{fg=DBbluedark, bg=lightgray!30}
+\setbeamercolor{itemize item}{fg=DBblue} % all frames will have red bullets
+\setbeamercolor{enumerate item}{fg=DBblue}
+
+\hypersetup{
+    colorlinks,
+    linktocpage,
+    allcolors=FUblue,
+    urlcolor=DBblue,
+    %linkcolor=red, % färbt auch Menü und Shorttitle
+    breaklinks
+}
+% setzt die globale Schriftfarbe auf DBbluedark
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+\AtBeginDocument{\globalcolor{DBbluedark}}
+
+% Bibliography entries:
+\setbeamercolor{bibliography entry author}{fg=FUblue}
+\setbeamercolor{bibliography entry title}{fg=FUblue} 
+\setbeamercolor{bibliography entry location}{fg=FUblue} 
+\setbeamercolor{bibliography entry note}{fg=FUblue}
+\setbeamercolor{bibliography item}{fg=DBblue}
+
+%%%%%%%%%%%% Blocks %%%%%%%%%%%%%
+% passt die Größe der Blöcke an \linewidth an an zieht den Rand ab, den die Blöcke mit sich bringen
+\addtobeamertemplate{block begin}{\flushright\setlength{\textwidth}{\linewidth-0.5\abstand}}{}
+\addtobeamertemplate{block example begin}{\flushright\setlength{\textwidth}{\linewidth-0.5\abstand}}{}
+\addtobeamertemplate{block alerted begin}{\flushright\setlength{\textwidth}{\linewidth-0.5\abstand}}{}
+
+%%%%%%%%%%%% Umgebung %%%%%%%%%%%%
+\newenvironment{frameWithPicture}[2]{% BEGIN
+  \begingroup%
+  \setbeamertemplate{background}{%
+    \begin{picture}(5,3.75)(0,-0.27)
+      \includegraphics[width = \paperwidth,
+      height=\dimexpr\paperheight-5.5ex-6pt-\abstand\relax,
+      %keepaspectratio
+      ]{#2}
+    \end{picture}%
+  }%
+  \begin{frame}{#1}
+}
+{% END
+  \end{frame}%
+  \endgroup%
+}
+
+%%%%%%%%%%%%%%%%%% Listings %%%%%%%%%%%%%%%%%%%
+\renewcommand{\lstlistingname}{Source Code}% Listing -> Source Code
+\lstloadlanguages{Python, R, HTML, Haskell, Java, SQL} 
+\lstset{
+   basicstyle=\color{DBbluedark}\small\ttfamily\selectfont,	% \scriptsize the size of the fonts that are used for the code
+   backgroundcolor = \color{gray!20},	% legt Farbe der Box fest
+   breakatwhitespace=false,	% sets if automatic breaks should only happen at whitespace
+   breaklines=true,			% sets automatic line breaking
+   captionpos=b,				% sets the caption-position to bottom, t for top
+   commentstyle=\color{gray}\selectfont,% comment style
+   frame=single,				% adds a frame around the code
+   keepspaces=true,			% keeps spaces in text, useful for keeping indentation
+							% of code (possibly needs columns=flexible)
+   keywordstyle=\bfseries\color{DBblue}\selectfont,% keyword style
+   ndkeywordstyle=\color{DBbluedark}\bfseries\selectfont,
+   numbers=left,				% where to put the line-numbers;
+   							% possible values are (none, left, right)
+   numberstyle=\scriptsize\color{FUblue}\selectfont,	% the style that is used for the line-numbers
+   numbersep=9pt,			% how far the line-numbers are from the code
+   stepnumber=1,				% nummeriert nur jede i-te Zeile
+   showspaces=false,			% show spaces everywhere adding particular underscores;
+							% it overrides 'showstringspaces'
+   %showstringspaces=false,	% underline spaces within strings only
+   showtabs=false,			% show tabs within strings adding particular underscores
+   flexiblecolumns=false,
+   %tabsize=1,				% the step between two line-numbers. If 1: each line will be numbered
+   stringstyle=\color{red}\ttfamily\selectfont,	% string literal style
+   numberblanklines=false,				% leere Zeilen werden nicht mitnummeriert
+   xleftmargin=\dimexpr\abstand+2pt\relax,	% Abstand zum linken Layoutrand
+   framexleftmargin=\dimexpr\abstand-2pt\relax,
+   xrightmargin=\dimexpr\abstand+2pt\relax,					% Abstand zum rechten Layoutrand
+   framexrightmargin=\dimexpr\abstand-2pt\relax,
+   aboveskip=2ex, 
+}
+
+\lstdefinestyle{html}{
+   language=HTML,
+}
+\lstdefinestyle{hs}{
+   language=Haskell,
+}
+\lstdefinestyle{sql}{
+   language=SQL,
+}
+\lstdefinestyle{pseudo}{
+   language = Python,
+   mathescape = true,
+   keywords = {do, procedure, end, while, if, else},
+}
+\lstdefinestyle{java}{
+	language=Java,
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+	extendedchars=true,% lets you use non-ASCII characters;
+    % for 8-bits encodings only, does not work with UTF-8
+}
+\lstdefinestyle{R}{
+	language=R,
+	extendedchars=true,% for 8-bits encodings only,
+    % does not work with UTF-8
+}

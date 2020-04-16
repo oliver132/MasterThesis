@@ -1,0 +1,25 @@
+\chapter{Conclusion}
+\label{conclusion}
+
+The chapter \textit{\nameref{conclusion}} covers the sections \textit{\nameref{discussion}} and \textit{\nameref{futurework}}. In \textit{\nameref{discussion}} the results of the previous chapter \textit{\nameref{results}} are discussed. In the second section, \textit{\nameref{futurework}}, gives impulse for further research.
+\section{Discussion of Results}
+\label{discussion}
+The results of the security risk analysis show that the security concept is applicable for use in a client-server infrastructure with a mobile application and complies with the requirements of the General Data Protection Regulation (GDPR). The use of the security concept is therefore not limited to the use in the CliniScale project, but can be applied to any system with a similar infrastructure. Due to the determination of appropriate security measures depending on the potential risk of the examined data, relevant regulations of the GDPR have been fulfilled.\\
+\newline
+The modular approach of the MoRA methodology allows for a successful integration of the Microsoft Threat Modeling Tool in the form of threat and control catalogues. Threats generated in the Microsoft Threat Modeling Tool and their suggested controls are easily integrated into the MoRA methodology. The lack of a defined required attack potential is adjusted by estimating the values based on the experience of the security analyst.\\
+\newline
+The regulations implemented by the GDPR regarding this thesis have been identified. From a security point of view, they are vague on the topics of determining the possible risks associated with personal data and the actual implementation of measurements. The unspecific regulations regarding encryption, specifically which standards or protocols to implement, creates the impression that the GDPR tries to dodge the responsibility by putting it in the hand of the controller. External help, in the form of the technical guidelines of the German Federal Office for Information Security, has to be counseled to reach the requested level of security. A regulation regarding the security and privacy of natural persons should have made a greater effort in defining technical guidelines to follow when implementing required security measurements.\\
+\newline
+
+
+\section{Future Work}
+\label{futurework}
+Open topics when it comes to compliance with the GDPR have to be discussed. The process of registration of a user and obtaining his consent for the gathering and processing of personal data has to be defined. User roles and access rights should be determined to enable the implementation of role based access. Mechanism to detect intrusion in order to notify authorities and users of possible disclosure of personal data, as required by the GDPR, have to be implemented.\\
+\newline
+The implementation guideline of identified controls has to be applied to the current implementations of the CliniScale system, both server side and to the mobile application.\\
+\newline
+In order to guarantee a sufficient level of security to the entire system, a security concept regarding the storage of critical information, such as sensitive personal data or secret keys, has to be developed for both the application on a server infrastructure and on mobile applications.\\
+\newline
+New threat and control catalogues, with the focus on application to systems similar to CliniScale, can be developed. Threats specific to the domain of mobile healthcare applications have to be identified and categorized. Further, matching controls that mitigate the effect of identified threats should be identified in order to create a control catalogue. If said catalogues are developed, a new security risk assessment using them should be performed.\\
+\newline
+Adopting secure software engineering processes, such as Secure Software Development Lifecycles (SSDLC) and Security Maturity Models (SMM), help improve the security level of designed, implemented and evaluated software. SSDLC are models that define the process of software development, with a focus on security. Their goal is to improve the level of security by ensuring that security assurance activities, such as risk assessments, penetration testing or code review, are an integral part of the development effort. SMM assess the level of implementation of security processes and gives a guideline on how to further improve these.
